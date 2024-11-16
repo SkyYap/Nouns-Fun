@@ -1,6 +1,7 @@
 import React from 'react';
 import { Wormhole } from './components/Wormhole';
 
+
 function App() {
   return (
     <div className="min-h-screen bg-black overflow-hidden">

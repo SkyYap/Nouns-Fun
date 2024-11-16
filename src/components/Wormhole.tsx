@@ -3,9 +3,8 @@ import { NFTCard } from './NFTCard';
 
 // Function to generate random position within constraints
 const generatePosition = (index: number, total: number) => {
-  // Divide the screen into sectors for better distribution
   const angle = (index / total) * 2 * Math.PI;
-  const radius = 20 + Math.random() * 30; // Random radius between 20-50% from center
+  const radius = 20 + Math.random() * 30;
   
   return {
     x: 50 + Math.cos(angle) * radius,
@@ -13,34 +12,35 @@ const generatePosition = (index: number, total: number) => {
   };
 };
 
-const nfts = [
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=300&h=300&fit=crop',
-    link: 'https://opensea.io',
-    delay: 0.2
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?w=300&h=300&fit=crop',
-    link: 'https://rarible.com',
-    delay: 0.4
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&h=300&fit=crop',
-    link: 'https://foundation.app',
-    delay: 0.6
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1646967506564-32800ab53f96?w=300&h=300&fit=crop',
-    link: 'https://superrare.com',
-    delay: 0.8
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1635322966219-b75ed372eb01?w=300&h=300&fit=crop',
-    link: 'https://niftygateway.com',
-    delay: 1.0
-  }
-].map((nft, index, array) => ({
-  ...nft,
+// Update the base URL for Nouns images
+const NOUNS_IMAGE_BASE = "https://noun.pics/";
+
+const nfts = Object.entries({
+  1317: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1317",
+  1316: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1316",
+  1315: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1315",
+  1314: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1314",
+  1313: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1313",
+  1312: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1312",
+  1311: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1311",
+  1310: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1310",
+  1309: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1309",
+  1308: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1308",
+  1307: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1307",
+  1306: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1306",
+  1305: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1305",
+  1304: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1304",
+  1303: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1303",
+  1302: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1302",
+  1301: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1301",
+  1300: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1300",
+  1299: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1299",
+  1298: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1298",
+  1297: "https://eth.blockscout.com/token/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03/instance/1297",
+}).map(([tokenId, link], index, array) => ({
+  imageUrl: `${NOUNS_IMAGE_BASE}${tokenId}.png`,
+  link,
+  delay: (index * 0.1) % 1, // Shorter delays to make animation more dynamic
   position: generatePosition(index, array.length)
 }));
 
