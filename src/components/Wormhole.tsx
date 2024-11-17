@@ -51,11 +51,12 @@ export const Wormhole: React.FC = () => {
       <Navbar />
       <div className="relative w-full h-[calc(100vh-64px)]">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="relative w-64 h-64">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-full animate-spin-slow" 
-                 style={{ filter: 'blur(20px)' }} />
-            <div className="absolute inset-4 bg-black rounded-full animate-pulse" />
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-500/30 to-blue-500/30 rounded-full animate-ping-slow" />
+          <div className="relative w-[600px] h-[600px]">
+            <img 
+              src="/public/images.jpg" 
+              alt="Earth"
+              className="w-full h-full object-cover rounded-full animate-spin-slow"
+            />
           </div>
         </div>
         {nfts.map((nft, index) => (
